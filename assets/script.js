@@ -1,30 +1,60 @@
+
+const arrowLeft = document.querySelector("#banner .arrow_left");
+const arrowRight = document.querySelector("#banner .arrow_right");
+const bannerImg = document.querySelector(".banner-img");
+const bannerTagline = document.querySelector("p");
+const dots = document.querySelectorAll(".dot, .dot_selected");
+
 const slides = [
 	{
-		"image":"slide1.jpg",
+		"image":"./assets/images/slideshow/slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
 	},
 	{
-		"image":"slide2.jpg",
+		"image":"./assets/images/slideshow/slide2.jpg",
 		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
 	},
 	{
-		"image":"slide3.jpg",
+		"image":"./assets/images/slideshow/slide3.jpg",
 		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
 	},
 	{
-		"image":"slide4.png",
+		"image":"./assets/images/slideshow/slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-]
+];
 
-let arrowLeft = document.querySelector("#banner .arrow_left");
+let currentBannerIndex = 0;
 
-arrowLeft.addEventListener("click", function(){
-	console.log("click left")
-})
+function showBanner(index) {
+	bannerImg.src = slides[index].image;
+	bannerTagline.innerHTML = slides[index].tagLine;
+	dots.forEach((dot, i) => {
+		dot.classList.toggle("dot_selected", i === index);
+	});
+}
 
-let arrowRight = document.querySelector("#banner .arrow_right");
+showBanner(currentBannerIndex);
 
 arrowRight.addEventListener("click", function(){
-	console.log("click right")
-})
+	console.log("click right");
+	if (currentBannerIndex + 1 >= slides.length) {
+        currentBannerIndex = 0;
+    } else {
+        currentBannerIndex++;
+    }
+	showBanner(currentBannerIndex);
+});
+
+arrowLeft.addEventListener("click", function(){
+	console.log("click left");
+	if (currentBannerIndex - 1 < 0) {
+    currentBannerIndex = slides.length - 1;
+    } else {
+    currentBannerIndex--;
+    }
+    showBanner(currentBannerIndex);
+});
+
+
+
