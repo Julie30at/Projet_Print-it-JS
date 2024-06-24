@@ -1,8 +1,7 @@
-
-const arrowLeft = document.querySelector("#banner .arrow_left");
-const arrowRight = document.querySelector("#banner .arrow_right");
+const arrowLeft = document.getElementById("slide_left");
+const arrowRight = document.getElementById("slide_right");
 const bannerImg = document.querySelector(".banner-img");
-const bannerTagline = document.querySelector("p");
+const bannerTagline = document.getElementById("tagLine");
 const dots = document.querySelectorAll(".dot, .dot_selected");
 
 const slides = [
@@ -38,7 +37,7 @@ showBanner(currentBannerIndex);
 
 arrowRight.addEventListener("click", function(){
 	console.log("click right");
-	if (currentBannerIndex + 1 >= slides.length) {
+	if (currentBannerIndex === 3) {
         currentBannerIndex = 0;
     } else {
         currentBannerIndex++;
@@ -48,13 +47,10 @@ arrowRight.addEventListener("click", function(){
 
 arrowLeft.addEventListener("click", function(){
 	console.log("click left");
-	if (currentBannerIndex - 1 < 0) {
-    currentBannerIndex = slides.length - 1;
+	if (currentBannerIndex === 0) {
+    currentBannerIndex = 3;
     } else {
     currentBannerIndex--;
     }
     showBanner(currentBannerIndex);
 });
-
-
-
