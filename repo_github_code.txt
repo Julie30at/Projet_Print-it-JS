@@ -1,7 +1,3 @@
 Repostery GitHub :
 
 https://github.com/Julie30at/Projet_Print-it-JS
-
-Site Online :
-
-https://julie30at.github.io/Projet_Print-it-JS/
