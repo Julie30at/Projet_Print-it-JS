@@ -1,9 +1,11 @@
+//selection des éléments du DOM
 const arrowLeft = document.getElementById("slide_left");
 const arrowRight = document.getElementById("slide_right");
 const bannerImg = document.querySelector(".banner-img");
 const bannerTagline = document.getElementById("tagLine");
 const dots = document.querySelectorAll(".dot, .dot_selected");
 
+//tableau des données du diapositive
 const slides = [
 	{
 		"image":"./assets/images/slideshow/slide1.jpg",
@@ -23,8 +25,10 @@ const slides = [
 	}
 ];
 
+//variable de la bannière initiale
 let currentBannerIndex = 0;
 
+//fonction d'affichage bannière
 function showBanner(index) {
 	bannerImg.src = slides[index].image;
 	bannerTagline.innerHTML = slides[index].tagLine;
@@ -33,8 +37,10 @@ function showBanner(index) {
 	});
 }
 
+//initialisation de la première bannière
 showBanner(currentBannerIndex);
 
+//gestion de lévènement pour flèche droite
 arrowRight.addEventListener("click", function(){
 	console.log("click right");
 	if (currentBannerIndex === 3) {
@@ -45,6 +51,7 @@ arrowRight.addEventListener("click", function(){
 	showBanner(currentBannerIndex);
 });
 
+//gestion de l'évènement pour flèche gauche
 arrowLeft.addEventListener("click", function(){
 	console.log("click left");
 	if (currentBannerIndex === 0) {
